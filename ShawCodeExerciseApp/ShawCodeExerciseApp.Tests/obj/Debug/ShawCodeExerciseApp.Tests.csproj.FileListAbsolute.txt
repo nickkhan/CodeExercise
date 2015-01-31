@@ -1,0 +1,15 @@
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\obj\Debug\ShawCodeExerciseApp.Tests.csprojResolveAssemblyReference.cache
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\ShawCodeExerciseApp.Tests.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\ShawCodeExerciseApp.Tests.pdb
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\ShawCodeExerciseApp.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\System.Web.Http.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\System.Web.Http.WebHost.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\System.Net.Http.Formatting.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\ShawCodeExerciseApp.pdb
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\System.Web.Http.xml
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\System.Web.Http.WebHost.xml
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\System.Net.Http.Formatting.xml
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\obj\Debug\ShawCodeExerciseApp.Tests.dll
+D:\Projects\ShawCodeExerciseApp\ShawCodeExerciseApp.Tests\obj\Debug\ShawCodeExerciseApp.Tests.pdb
