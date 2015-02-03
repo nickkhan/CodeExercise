@@ -29,19 +29,10 @@ namespace ShawCodeExerciseApp.Controllers
             if (category == null)
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Category entry is null");
 
-            var show = StaticCache.Shows.Where(e => e.ID == category.ShowID).FirstOrDefault();
-
-            if(show!=null)
+            if (StaticCache.Categories.Where(c => c.CategoryName == category.CategoryName).FirstOrDefault() != null)
             {
-                if (StaticCache.Categories.Where(c => c.CategoryName == category.CategoryName).FirstOrDefault() != null)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Category entry already exists for showid");
-                }
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Showid does not exist");
-            }                
+                return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Category entry already exists for showid");
+            }            
 
             StaticCache.Categories.Add(category);
 

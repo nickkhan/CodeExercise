@@ -28,28 +28,46 @@ namespace ShawCodeExerciseApp.Controllers
             return StaticCache.Shows;
         }
 
- 
-        public ShowModel GetShowData(int id)
+
+        public HttpResponseMessage GetShowData(int id)
         {
-            return StaticCache.Shows.Where(show => show.ID == id).FirstOrDefault();            
+            var findShow = StaticCache.Shows.Where(show => show.ID == id).FirstOrDefault();
+            if (findShow == null)
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Show not found");
+
+            var response = Request.CreateResponse<ShowModel>(HttpStatusCode.OK, findShow);
+
+            return response;             
         }
 
         [HttpPost]
-        public void CreateShow(ShowModel show)
+        public HttpResponseMessage CreateShow(ShowModel show)
         {
-            if (show != null)
-            {
-                StaticCache.Shows.Add(show);
-            }
+            if (show == null)
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Show entry is null");
+
+            var showExists = StaticCache.Shows.Where(e => e.ShowName == show.ShowName).FirstOrDefault();
+
+            if(showExists!=null)
+                return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Show entry already exists");
+
+            StaticCache.Shows.Add(show);
+
+            var response = Request.CreateResponse<ShowModel>(HttpStatusCode.Created, show);
+
+            return response; 
         }
 
-        public void DeleteShow(int id)
+        public HttpResponseMessage DeleteShow(int id)
         {
             var show = StaticCache.Shows.FirstOrDefault(e => e.ID == id);
-            if (show != null)
-            {
-                StaticCache.Shows.Remove(show);
-            }
+            if(show == null)
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Show entry not found");
+                        
+            StaticCache.Shows.Remove(show);
+            var response = Request.CreateResponse<ShowModel>(HttpStatusCode.OK, show);
+
+            return response; 
         }
     }
 }
