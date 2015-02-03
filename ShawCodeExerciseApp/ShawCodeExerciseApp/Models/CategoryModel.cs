@@ -17,8 +17,8 @@ namespace ShawCodeExercise.Models
             RBTV,
             ETCANADASEGMENTS
         };
-
-        public CategoryEnum CategoryName { get; set; }
+        public int ShowID { get; set; }
+        public string CategoryName { get; set; }
 
         public List<VideoModel> ShowCategoryVideos { get; set; }
     }

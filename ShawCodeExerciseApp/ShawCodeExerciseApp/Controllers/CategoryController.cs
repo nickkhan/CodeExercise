@@ -6,51 +6,48 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+//200 OK: Success
+//201 Created - Used on POST request when creating a new resource.
+//304 Not Modified: no new data to return.
+//400 Bad Request: Invalid Request.
+//401 Unauthorized: Authentication.
+//403 Forbidden: Authorization
+//404 Not Found – entity does not exist.
+//406 Not Acceptable – bad params.
+//409 Conflict - For POST / PUT requests if the resource already exists.
+//500 Internal Server Error
+//503 Service Unavailable
+
 namespace ShawCodeExerciseApp.Controllers
 {
     public class CategoryController : ApiController
     {
-        static List<CategoryModel> Categories = InitCategories();
 
-        private static List<CategoryModel> InitCategories()
-        {
-            var categories = new List<CategoryModel>();
-
-            var category = new CategoryModel();
-            category.ID = 1;
-            category.CategoryName = CategoryModel.CategoryEnum.FULLEPISODES;
-            categories.Add(category);
-
-            category.ID = 2;
-            category.CategoryName = CategoryModel.CategoryEnum.ETCANADASEGMENTS;
-            categories.Add(category);
-
-            category.ID = 3;
-            category.CategoryName = CategoryModel.CategoryEnum.FULLEPISODES;
-            categories.Add(category);
-
-            category.ID = 4;
-            category.CategoryName = CategoryModel.CategoryEnum.RBTV;
-            categories.Add(category);
-
-            category.ID = 5;
-            category.CategoryName = CategoryModel.CategoryEnum.WEBISODES;
-            categories.Add(category);
-
-            category.ID = 6;
-            category.CategoryName = CategoryModel.CategoryEnum.CLIPS;
-            categories.Add(category);
-
-            return categories;
-
-        }
         [HttpPost]
-        public void CreateCategory([FromBody]CategoryModel category)
+        public HttpResponseMessage CreateCategory(CategoryModel category)
         {
-            if (category != null)
+            if (category == null)
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Category entry is null");
+
+            var show = StaticCache.Shows.Where(e => e.ID == category.ShowID).FirstOrDefault();
+
+            if(show!=null)
             {
-                Categories.Add(category);
+                if (StaticCache.Categories.Where(c => c.CategoryName == category.CategoryName).FirstOrDefault() != null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Category entry already exists for showid");
+                }
             }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Showid does not exist");
+            }                
+
+            StaticCache.Categories.Add(category);
+
+            var response = Request.CreateResponse<CategoryModel>(HttpStatusCode.Created, category);
+
+            return response;            
         }
     }
 }
