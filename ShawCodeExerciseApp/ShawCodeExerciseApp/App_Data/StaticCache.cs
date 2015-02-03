@@ -143,14 +143,14 @@ namespace ShawCodeExerciseApp
             };
             categories.Add(category);
 
-            category = new CategoryModel();
-            category.ID = (int)CategoryModel.CategoryEnum.FULLEPISODES;
-            category.ShowID = 2;
-            category.CategoryName = CategoryModel.CategoryEnum.FULLEPISODES.ToString();
-            category.ShowCategoryVideos = new List<VideoModel>(){
-                Videos[1],
-                Videos[4]
-            };
+            //category = new CategoryModel();
+            //category.ID = (int)CategoryModel.CategoryEnum.FULLEPISODES;
+            //category.ShowID = 2;
+            //category.CategoryName = CategoryModel.CategoryEnum.FULLEPISODES.ToString();
+            //category.ShowCategoryVideos = new List<VideoModel>(){
+            //    Videos[1],
+            //    Videos[4]
+            //};
             categories.Add(category);
 
             category = new CategoryModel();

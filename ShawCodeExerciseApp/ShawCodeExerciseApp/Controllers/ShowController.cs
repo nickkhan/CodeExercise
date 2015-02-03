@@ -6,6 +6,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+/*
+ * Use Fiddler or advanced rest client extension for chrome to test Web Api
+ * 
+*/
 //200 OK: Success
 //201 Created - Used on POST request when creating a new resource.
 //304 Not Modified: no new data to return.
@@ -44,7 +48,7 @@ namespace ShawCodeExerciseApp.Controllers
         public HttpResponseMessage CreateShow(ShowModel show)
         {
             if (show == null)
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Show entry is null");
+                return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Show entry is null");
 
             var showExists = StaticCache.Shows.Where(e => e.ShowName == show.ShowName).FirstOrDefault();
 

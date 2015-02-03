@@ -6,6 +6,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
+
+/*
+ * Use Fiddler or advanced rest client extension for chrome to test Web Api
+ * 
+*/
+
 //200 OK: Success
 //201 Created - Used on POST request when creating a new resource.
 //304 Not Modified: no new data to return.

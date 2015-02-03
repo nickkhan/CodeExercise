@@ -6,6 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
+/*
+ * Use Fiddler or advanced rest client extension for chrome to test Web Api
+ * 
+*/
 //200 OK: Success
 //201 Created - Used on POST request when creating a new resource.
 //304 Not Modified: no new data to return.
@@ -32,7 +37,7 @@ namespace ShawCodeExerciseApp.Controllers
             if (StaticCache.Categories.Where(c => c.CategoryName == category.CategoryName).FirstOrDefault() != null)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Category entry already exists for showid");
-            }            
+            }
 
             StaticCache.Categories.Add(category);
 
